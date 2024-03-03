@@ -15,8 +15,14 @@
 #include <stdexcept>
 #include <vector>
 
+std::string getFileName();
+std::vector<std::Movie> getFileInformation();
+
 int main() {
-  // this is a placeholder comment
+  // Get some basic information
+  std::string userName;
+  std::cout << "What is your name?" << std::endl;
+  getline(std::cin, userName);
 
   return 0;
 }

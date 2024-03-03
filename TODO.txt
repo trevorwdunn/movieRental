@@ -1,0 +1,7 @@
+1) Write the functions to get the movie information. The movies will require the following:
+	1) Title
+	2) Synopsis
+	3) Runtime
+	4) Rating
+	5) Price
+	6) Quantity
