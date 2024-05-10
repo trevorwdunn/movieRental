@@ -14,37 +14,40 @@ The "Movie" Object will have the following characteristics:
 #include <string>
 
 class Movie {
-private:
-  std::string movieTitle;
-  std::string movieSynopsis;
-  std::string movieRuntime;
-  int movieRating;
-  double moviePrice;
-  int movieQuantity;
+  private:
+	std::string movieTitle;
+	std::string movieSynopsis;
+	std::string movieRuntime;
+	std::string director;
+	int movieRating;
+	double moviePrice;
+	int movieQuantity;
 
-public:
-  Movie();
-  Movie(std::string movieTitle, std::string MovieSynopsis,
-        std::string movieRuntime, int movieRating, double moviePrice,
-        int movieQuantity);
-  // Setters
-  void setMovieTitle();
-  void setMovieSynpsis();
-  void setMovieRuntime();
-  void setMovieRating();
-  void setMoviePrice();
-  void setMovieQuantity();
+  public:
+	Movie(std::string movieTitle, std::string MovieSynopsis,
+		  std::string movieRuntime, std::string director, int movieRating,
+		  double moviePrice, int movieQuantity);
 
-  // Getters
-  std::string getMovieTitle() const;
-  std::string getMovieSynposis() const;
-  std::string getMovieRuntime() const;
-  int getMovieRating() const;
-  double getMoviePrice() const;
-  int getMovieQuantity() const;
+	// Setters
+	void setMovieTitle();
+	void setMovieSynpsis();
+	void setMovieRuntime();
+	void setMovieRating();
+	void setMoviePrice();
+	void setMovieQuantity();
+	void setDirector();
 
-  void printMovieTitle();
-  void printMovieInfo();
+	// Getters
+	std::string getMovieTitle() const;
+	std::string getMovieSynposis() const;
+	std::string getMovieRuntime() const;
+	std::string getDirector() const;
+	int getMovieRating() const;
+	double getMoviePrice() const;
+	int getMovieQuantity() const;
+
+	void printMovieTitle();
+	void printMovieInfo();
 };
 
 #endif // !MOVIE_H
