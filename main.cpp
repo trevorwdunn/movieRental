@@ -20,10 +20,16 @@ using namespace std;
 // Constants
 const string DEFAULT_INVENTORY_LIST = "default_inventory.txt";
 
-// Function prototypes
-void presentMenu();
+// Setup Functions
+void presentMenu(vector<Movie> &movies);
 string getfileName();
 vector<Movie> readMoviesFromFile(vector<Movie> movies, string fileName);
+
+// Menu Functions
+void listMovies(vector<Movie> &movies);
+void searchMovies(vector<Movie> &movies);
+vector<Movie> rentMovie(vector<Movie> &movies);
+vector<Movie> returnMovie(vector<Movie> &movies);
 
 int main() {
 	// Create a vector of movies
@@ -36,13 +42,13 @@ int main() {
 	getline(cin, userName);
 
 	getfileName();
-	presentMenu();
+	presentMenu(movies);
 	readMoviesFromFile(movies, fileName);
 
 	return 0;
 }
 
-void presentMenu() {
+void presentMenu(vector<Movie> &movies) {
 	// Create a menu
 	cout << "Movie Rental Database" << endl;
 	cout << "Please select an option from the menu below:" << endl;
@@ -57,19 +63,21 @@ void presentMenu() {
 
 	switch (choice) {
 	case 1:
-		// List all movies
+		listMovies(movies);
 		break;
 	case 2:
-		// Search for a movie
+		searchMovies(movies);
 		break;
 	case 3:
-		// Rent a movie
+		rentMovie(movies);
 		break;
 	case 4:
-		// Return a movie
+		returnMovie(movies);
 		break;
 	case 5:
 		// Exit
+		cout << "Thank you for using the Movie Rental Database. Goodbye!"
+			 << endl;
 		break;
 	default:
 		cout << "Invalid choice. Please try again." << endl;
@@ -134,3 +142,30 @@ vector<Movie> readMoviesFromFile(vector<Movie> movies, string fileName) {
 
 	return movies;
 }
+
+void listMovies(vector<Movie> &movies) {
+	for (Movie movie : movies) {
+		movie.printMovieTitle();
+	}
+}
+
+void searchMovies(vector<Movie> &movies) {
+	string search;
+	cout << "Enter the title of the movie you would like to search for: ";
+	getline(cin, search);
+
+	// Search for the movie
+	auto it = find_if(movies.begin(), movies.end(), [&search](Movie movie) {
+		return movie.getMovieTitle() == search;
+	});
+
+	if (it != movies.end()) {
+		it->printMovieInfo();
+	} else {
+		cout << "Movie not found." << endl;
+	}
+}
+
+vector<Movie> rentMovie(vector<Movie> &movies) {}
+
+vector<Movie> returnMovie(vector<Movie> &movies);

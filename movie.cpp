@@ -34,10 +34,7 @@ void Movie::setMoviePrice() {
 	std::cin >> moviePrice;
 }
 
-void Movie::setMovieQuantity() {
-	std::cout << "Enter the movie quantity: ";
-	std::cin >> movieQuantity;
-}
+void Movie::setMovieQuantity(int adjustment) { movieQuantity += adjustment; }
 
 void Movie::setDirector() {
 	std::cout << "Enter the director: ";

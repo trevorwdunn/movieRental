@@ -34,7 +34,7 @@ class Movie {
 	void setMovieRuntime();
 	void setMovieRating();
 	void setMoviePrice();
-	void setMovieQuantity();
+	void setMovieQuantity(int adjustment);
 	void setDirector();
 
 	// Getters
