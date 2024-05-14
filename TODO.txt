@@ -1,2 +1,1 @@
 Reimplement setters so that moviequantity can be dynamically adjusted when a movie is rented or returned. 
-	- In doing this, be sure to retain the ability for the moviequantity to be set by the readMoviesFromFile() function. 

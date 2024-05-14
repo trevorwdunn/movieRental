@@ -34,14 +34,10 @@ vector<Movie> returnMovie(vector<Movie> &movies);
 int main() {
 	// Create a vector of movies
 	vector<Movie> movies;
-	string userName;
 	string fileName;
 
-	// Get some basic information
-	cout << "What is your name?" << endl;
-	getline(cin, userName);
-
-	getfileName();
+	// Get the file name, if necessary
+	fileName = getfileName();
 	presentMenu(movies);
 	readMoviesFromFile(movies, fileName);
 
@@ -92,7 +88,7 @@ string getfileName() {
 	cout << "Would you like to read from a file? (y/n)" << endl;
 	cin >> fileResponse;
 	if (fileResponse == 'y') {
-		cout << "Enter the name of the file you would like to read from: ";
+		cout << "Enter the full name of the file you would like to read from: ";
 		cin >> fileName;
 	} else {
 		fileName = DEFAULT_INVENTORY_LIST;
@@ -164,8 +160,31 @@ void searchMovies(vector<Movie> &movies) {
 	} else {
 		cout << "Movie not found." << endl;
 	}
+	cout << "Not yet implemented.\n";
 }
 
-vector<Movie> rentMovie(vector<Movie> &movies) {}
+vector<Movie> rentMovie(vector<Movie> &movies) {
+	cout << "What is the title of the movie you would like to rent?\n";
+	string title;
+	cin.ignore();
+	getline(cin, title);
 
-vector<Movie> returnMovie(vector<Movie> &movies);
+	// Search for the movie
+	auto it = find_if(movies.begin(), movies.end(), [&title](Movie movie) {
+		return movie.getMovieTitle() == title;
+	});
+
+	if (it != movies.end()) {
+		it->setMovieQuantity(-1);
+	} else {
+		cout << "Movie not found." << endl;
+	}
+
+	return movies;
+}
+
+vector<Movie> returnMovie(vector<Movie> &movies) {
+
+	cout << "Not yet implemented.\n";
+	return movies;
+}
